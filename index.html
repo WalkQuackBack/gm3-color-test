@@ -245,21 +245,19 @@
             height: 36px;
             border-radius: 9999px;
 
+            transition: 125ms scale ease;
+
             &:hover {
                 background-color: color-mix(in oklab, transparent, var(--fg) 10%);
             }
 
             &:active {
+                scale: 0.9;
                 background-color: color-mix(in oklab, transparent, var(--fg) 20%);
             }
 
             &:focus-visible {
                 outline: 2px solid var(--fg);
-            }
-
-            &.copy-btn-success {
-                opacity: 0.5;
-                scale: 0.75
             }
         }
     </style>
@@ -432,10 +430,6 @@
             const text = ev.target.getAttribute('data-copy-text')
             try {
                 await navigator.clipboard.writeText(text);
-                button.classList.add('copy-btn-success')
-                setTimeout(() => {
-                    button.classList.remove('copy-btn-success')
-                }, 800)
             } catch (err) {
                 alert('failed to copy to clipboard: ', err);
             }
