@@ -428,13 +428,13 @@
         }
         async function onCopy(ev) {
             const button = ev.target
-            const copyText = ev.target.getAttribute('data-copy-text')
+            const text = ev.target.getAttribute('data-copy-text')
             try {
                 await navigator.clipboard.writeText(text);
                 button.classList.add('copy-btn-success')
                 setTimeout(() => {
                     button.classList.remove('copy-btn-success')
-                }, 2000)
+                }, 800)
             } catch (err) {
                 alert('failed to copy to clipboard: ', err);
             }
